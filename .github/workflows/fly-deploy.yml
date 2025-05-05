@@ -26,6 +26,6 @@ jobs:
           
       - name: Deploy to Fly.io
         run: |
-          echo "Deploying to app millzmaleficarum-portal-v05"
-          flyctl deploy --remote-only --app millzmaleficarum-portal-v05 --config fly.toml
+          echo "Deploying to app millzmaleficarum-portal-v0p5"
+          flyctl deploy --remote-only --app millzmaleficarum-portal-v0p5 --config fly.toml
           echo "Deployment completed"
