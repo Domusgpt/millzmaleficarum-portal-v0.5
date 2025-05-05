@@ -3,8 +3,10 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Status
-- **Current Version: 0.4** (See DEV-TRACK.md for latest updates)
-- Hyperdimensional magazine with reactive animations, infinite scroll, and audio-reactive visualizations
+- **Current Version: 0.5-dev** (See DEV-TRACK.md for latest updates)
+- Hyperdimensional magazine with enhanced snap-scroll page transitions
+- Implementing portal-like transitions between sections with 4D visualization effects
+- Advanced integration of HyperAV engine directly into the page structure
 
 ## Commands
 - **Run locally**: `npm start` or `./run-local.sh`

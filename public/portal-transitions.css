@@ -1,0 +1,324 @@
+/* 
+ * Portal Transitions CSS for MillzMaleficarum Codex v0.5 
+ * Enhanced dimensional portal effects and section styling
+ */
+
+/* Make sure the root container is set up for 3D transforms */
+html, body {
+  perspective: 1800px;
+  transform-style: preserve-3d;
+}
+
+/* Container with 3D perspective for portal transitions */
+#magazine-content {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  scroll-behavior: smooth;
+}
+
+/* Portal section base styles */
+.portal-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, 
+              border-radius 0.5s ease, 
+              box-shadow 0.5s ease,
+              background-color 0.8s ease;
+  padding: 4rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 60, 0.4);
+  backface-visibility: hidden;
+}
+
+/* Section-specific portal styling (extends existing style.css) */
+#cover.portal-section {
+  background-color: rgba(0, 0, 70, 0.4);
+}
+
+#editorial.portal-section {
+  background-color: rgba(0, 5, 60, 0.4);
+}
+
+#culture.portal-section {
+  background-color: rgba(15, 0, 60, 0.4);
+}
+
+#tech.portal-section {
+  background-color: rgba(0, 15, 60, 0.4);
+}
+
+#interview.portal-section {
+  background-color: rgba(5, 0, 65, 0.4);
+}
+
+#ads.portal-section {
+  background-color: rgba(10, 0, 50, 0.4);
+}
+
+#lore.portal-section {
+  background-color: rgba(20, 0, 60, 0.4);
+}
+
+/* Ensure section content remains above portal effects */
+.portal-section > * {
+  position: relative;
+  z-index: 5;
+}
+
+/* Portal border effects */
+.portal-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.5);
+  border: 1px solid var(--accent2);
+  transition: box-shadow 0.8s ease, 
+              border 0.8s ease, 
+              border-radius 0.8s ease;
+}
+
+/* Section corner ornaments */
+.portal-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent3);
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+
+/* Corner positioning */
+.portal-corner.top-left {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.portal-corner.top-right {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.portal-corner.bottom-left {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.portal-corner.bottom-right {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Portal overlay styling */
+.portal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portal-canvas,
+.portal-4d-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Section transition animations */
+.portal-section.exit-to-back {
+  animation: exitToBack 1.5s ease-in-out;
+}
+
+.portal-section.exit-to-front {
+  animation: exitToFront 1.5s ease-in-out;
+}
+
+@keyframes exitToBack {
+  0% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(0.9) translateZ(-100px); }
+  100% { transform: scale(1) translateZ(0); }
+}
+
+@keyframes exitToFront {
+  0% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(1.1) translateZ(100px); }
+  100% { transform: scale(1) translateZ(0); }
+}
+
+/* Portal border animations */
+@keyframes portalBorderPulse {
+  0% { box-shadow: inset 0 0 30px var(--accent2); opacity: 0.7; }
+  50% { box-shadow: inset 0 0 50px var(--accent2); opacity: 0.9; }
+  100% { box-shadow: inset 0 0 30px var(--accent2); opacity: 0.7; }
+}
+
+@keyframes portalWarp {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes cornerPulse {
+  0% { width: 40px; height: 40px; border-width: 2px; }
+  50% { width: 50px; height: 50px; border-width: 3px; }
+  100% { width: 40px; height: 40px; border-width: 2px; }
+}
+
+/* Section hover effects */
+.portal-section:hover .portal-border {
+  box-shadow: inset 0 0 50px var(--accent2);
+  animation: portalBorderPulse 3s infinite ease-in-out;
+}
+
+.portal-section:hover .portal-corner {
+  animation: cornerPulse 3s infinite ease-in-out;
+}
+
+/* Section-specific portal border styling */
+#cover .portal-border {
+  box-shadow: inset 0 0 30px rgba(255, 0, 170, 0.5);
+  border-color: var(--accent1);
+}
+
+#editorial .portal-border {
+  box-shadow: inset 0 0 30px rgba(0, 238, 255, 0.5);
+  border-color: var(--accent2);
+}
+
+#culture .portal-border {
+  box-shadow: inset 0 0 30px rgba(204, 0, 255, 0.5);
+  border-color: var(--accent4);
+}
+
+#tech .portal-border {
+  box-shadow: inset 0 0 30px rgba(0, 255, 204, 0.5);
+  border-color: var(--accent2);
+}
+
+#interview .portal-border {
+  box-shadow: inset 0 0 30px rgba(255, 204, 0, 0.5);
+  border-color: var(--accent3);
+}
+
+#ads .portal-border {
+  box-shadow: inset 0 0 30px rgba(255, 51, 204, 0.5);
+  border-color: var(--accent1);
+}
+
+#lore .portal-border {
+  box-shadow: inset 0 0 30px rgba(138, 43, 226, 0.5);
+  border-color: var(--accent4);
+}
+
+/* Navigation controls styling */
+.portal-nav-controls {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 900;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.portal-nav-controls:hover {
+  opacity: 1;
+}
+
+.portal-nav-button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.portal-nav-button:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.portal-nav-button.active {
+  background: var(--accent1);
+  border-color: white;
+  box-shadow: 0 0 10px var(--accent1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .portal-section {
+    padding: 3rem 1rem 1rem 1rem;
+  }
+  
+  .portal-corner {
+    width: 30px;
+    height: 30px;
+  }
+  
+  @keyframes cornerPulse {
+    0% { width: 30px; height: 30px; border-width: 2px; }
+    50% { width: 40px; height: 40px; border-width: 3px; }
+    100% { width: 30px; height: 30px; border-width: 2px; }
+  }
+}
+
+@media (max-width: 480px) {
+  .portal-section {
+    padding: 2rem 0.8rem 0.8rem 0.8rem;
+  }
+  
+  .portal-corner {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @keyframes cornerPulse {
+    0% { width: 20px; height: 20px; border-width: 1px; }
+    50% { width: 25px; height: 25px; border-width: 2px; }
+    100% { width: 20px; height: 20px; border-width: 1px; }
+  }
+  
+  .portal-nav-controls {
+    right: 10px;
+  }
+  
+  .portal-nav-button {
+    width: 10px;
+    height: 10px;
+  }
+}

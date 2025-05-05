@@ -20,9 +20,32 @@
   --transition-speed: 0.3s;
 }
 
-/* Perspective mode for 3D effects */
+/* Perspective mode for 3D effects with snap scrolling */
 html {
   height: 100%;
+  scroll-behavior: smooth;
+  /* Enable snap scrolling */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Common styles for all section types in portal view */
+.cover-section, .editorial-section, .culture-section, 
+.tech-section, .interview-section, .ads-section, .lore-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  margin: 0;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 body {
@@ -36,7 +59,7 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100%;
-  perspective: 1000px;
+  perspective: 1500px; /* Increased for more dramatic portal effects */
 }
 
 body::before {
@@ -67,16 +90,16 @@ body::before {
 
 /* Main container with 3D perspective */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-left: calc(var(--nav-width) + 20px);
-  padding: 2rem;
+  width: 100vw;
+  margin: 0;
+  margin-left: var(--nav-width);
+  padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
+  /* Remove padding and max-width to allow full-screen sections */
 }
 
 /* Navigation styles */
@@ -1113,3 +1136,91 @@ footer {
     font-size: 1.4rem;
   }
 }
+/* Portal Transition Effects */
+.portal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portal-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Portal Border Effects */
+.portal-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.5);
+  border: 1px solid var(--accent2);
+  transition: box-shadow 0.5s ease;
+}
+
+/* Section-specific portal styles */
+#cover .portal-border {
+  box-shadow: inset 0 0 30px rgba(255, 0, 170, 0.5);
+  border-color: var(--accent1);
+}
+
+#editorial .portal-border {
+  box-shadow: inset 0 0 30px rgba(0, 238, 255, 0.5);
+  border-color: var(--accent2);
+}
+
+#culture .portal-border {
+  box-shadow: inset 0 0 30px rgba(204, 0, 255, 0.5);
+  border-color: var(--accent4);
+}
+
+#tech .portal-border {
+  box-shadow: inset 0 0 30px rgba(0, 255, 204, 0.5);
+  border-color: var(--accent2);
+}
+
+#interview .portal-border {
+  box-shadow: inset 0 0 30px rgba(255, 204, 0, 0.5);
+  border-color: var(--accent3);
+}
+
+#ads .portal-border {
+  box-shadow: inset 0 0 30px rgba(255, 51, 204, 0.5);
+  border-color: var(--accent1);
+}
+
+#lore .portal-border {
+  box-shadow: inset 0 0 30px rgba(138, 43, 226, 0.5);
+  border-color: var(--accent4);
+}
+
+/* Center content within sections */
+.cover-section > *, .editorial-section > *, .culture-section > *, 
+.tech-section > *, .interview-section > *, .lore-section > * {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Magazine page transitions */
+#magazine-content {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  transition: transform 0.5s ease;
+}
+EOF < /dev/null
