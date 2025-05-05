@@ -445,8 +445,9 @@ app.get('/api/visual-prompts', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`MillzMaleficarum Codex server running on port ${PORT}`);
+  console.log(`Server listening on 0.0.0.0:${PORT}`);
   console.log(`Dashboard available at http://localhost:${PORT}/dashboard`);
   console.log(`Magazine available at http://localhost:${PORT}/`);
 });

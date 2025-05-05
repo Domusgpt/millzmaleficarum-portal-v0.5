@@ -7,8 +7,7 @@ app = 'millzmaleficarum-portal-v0p5'
 primary_region = 'sjc'
 
 [build]
-  builder = "heroku/buildpacks:20"
-  buildpacks = ["heroku/nodejs"]
+  dockerfile = "Dockerfile"
 
 [env]
   PORT = '8080'
