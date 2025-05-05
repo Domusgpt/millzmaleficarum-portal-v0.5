@@ -1,7 +1,7 @@
 /**
- * MillzMaleficarum Codex v0.2
+ * MillzMaleficarum Codex v0.5
  * Main frontend script for the dynamic magazine
- * Enhanced with HyperAV integration, navigation, and advanced layouts
+ * Enhanced with HyperAV integration, navigation, advanced layouts, and portal transitions
  */
 
 // Track current display mode
