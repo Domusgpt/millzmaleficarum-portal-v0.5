@@ -1364,6 +1364,101 @@ class PortalTransitions {
   }
 
   /**
+   * Update configuration options
+   * @param {Object} options - New configuration options
+   */
+  updateOptions(options) {
+    // Update configuration with new options
+    this.config = { ...this.config, ...options };
+    
+    console.log('Portal Transitions: Configuration updated', this.config);
+    
+    // Re-initialize any components that depend on the updated options
+    if (options.enableAudio !== undefined && options.enableAudio !== null) {
+      if (options.enableAudio && !this.state.audioContext) {
+        this._initAudio();
+      } else if (!options.enableAudio && this.state.audioContext) {
+        if (this.state.audioContext) {
+          this.state.audioContext.close();
+          this.state.audioContext = null;
+          this.state.portalSounds = {};
+        }
+      }
+    }
+    
+    // Re-initialize 4D visualization if the option changed
+    if (options.enable4DEffects !== undefined && options.enable4DEffects !== null) {
+      if (options.enable4DEffects && !this.state.dimension4DCanvas) {
+        this._initialize4DVisualization();
+      } else if (!options.enable4DEffects && this.state.dimension4DCanvas) {
+        if (this.state.animation4D) {
+          cancelAnimationFrame(this.state.animation4D);
+          this.state.animation4D = null;
+        }
+        
+        if (this.state.dimension4DCanvas) {
+          this.state.dimension4DCanvas.remove();
+          this.state.dimension4DCanvas = null;
+          this.state.dimension4DContext = null;
+        }
+      }
+    }
+    
+    // Apply styles based on new settings
+    if (this.state.portalOverlay) {
+      // Update portal intensity if specified
+      if (options.portalIntensity !== undefined && options.portalIntensity !== null) {
+        this.state.portalOverlay.style.setProperty('--portal-intensity', options.portalIntensity);
+      }
+    }
+  }
+  
+  /**
+   * Update section colors
+   * @param {Object} colors - Section color configuration
+   */
+  updateSectionColors(colors) {
+    if (!colors) return;
+    
+    // Update internal state
+    Object.keys(colors).forEach(sectionId => {
+      this.state.sectionColors[sectionId] = colors[sectionId];
+    });
+    
+    // Update section styles if they exist
+    Object.keys(colors).forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const portalBorder = section.querySelector('.portal-border');
+        if (portalBorder) {
+          const colorConfig = colors[sectionId];
+          portalBorder.style.boxShadow = `inset 0 0 30px ${colorConfig.primary}80`;
+          portalBorder.style.border = `1px solid ${colorConfig.primary}`;
+        }
+        
+        // Update data attributes
+        section.dataset.primaryColor = colors[sectionId].primary;
+        section.dataset.secondaryColor = colors[sectionId].secondary;
+        if (colors[sectionId].accent) {
+          section.dataset.accentColor = colors[sectionId].accent;
+        }
+        
+        // Update corner colors
+        const corners = section.querySelectorAll('.portal-corner');
+        corners.forEach(corner => {
+          if (colors[sectionId].accent) {
+            corner.style.borderColor = colors[sectionId].accent;
+          } else {
+            corner.style.borderColor = colors[sectionId].primary;
+          }
+        });
+      }
+    });
+    
+    console.log('Portal Transitions: Section colors updated');
+  }
+
+  /**
    * Clean up resources
    */
   destroy() {

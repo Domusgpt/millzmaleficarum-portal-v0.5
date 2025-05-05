@@ -190,6 +190,11 @@ async function fetchMagazineData(mode) {
     if (data.effects && data.effects.hyperav_background && window.hyperAV) {
       updateHyperAVBackground(data.effects.hyperav_background);
     }
+    
+    // Initialize portal transitions if available
+    if (data.effects && data.effects.portal_transitions && data.effects.portal_transitions.enabled) {
+      initializePortalTransitions(data.effects.portal_transitions);
+    }
   } catch (error) {
     console.error('Error fetching magazine data:', error);
     displayErrorMessage(`Failed to load magazine content: ${error.message}`);
@@ -213,6 +218,68 @@ function updateHyperAVBackground(config) {
   
   // Show the container
   document.getElementById('hyperav-background').style.opacity = '1';
+}
+
+/**
+ * Initializes the enhanced portal transitions system
+ * @param {Object} config - Portal transitions configuration
+ */
+function initializePortalTransitions(config) {
+  // Check if portal transitions are already initialized
+  if (window.portalTransitions) {
+    console.log('Portal transitions already initialized, updating configuration');
+    
+    // Update configuration options
+    const options = {
+      transitionDuration: 1500,
+      useHyperAV: config.hyperav_enabled !== false,
+      portalIntensity: config.intensity || 0.8,
+      enableAudio: config.audio_enabled !== false,
+      enable4DEffects: config['4d_effects'] !== false
+    };
+    
+    // Pass color configuration if available
+    if (config.colors) {
+      // Convert colors from the JSON structure to the format expected by PortalTransitions
+      const sectionColors = {};
+      Object.keys(config.colors).forEach(sectionId => {
+        sectionColors[sectionId] = {
+          primary: config.colors[sectionId].primary,
+          secondary: config.colors[sectionId].secondary,
+          accent: config.colors[sectionId].accent
+        };
+      });
+      
+      options.sectionColors = sectionColors;
+    }
+    
+    // Apply configuration to existing instance
+    window.portalTransitions.updateOptions(options);
+  } else {
+    console.log('Initializing portal transitions with configuration', config);
+    
+    // Use the enhanced portal transitions if available,
+    // otherwise fall back to the basic version
+    if (typeof PortalTransitions !== 'undefined') {
+      window.portalTransitions = new PortalTransitions({
+        transitionDuration: 1500,
+        useHyperAV: config.hyperav_enabled !== false,
+        portalIntensity: config.intensity || 0.8,
+        enableAudio: config.audio_enabled !== false,
+        enable4DEffects: config['4d_effects'] !== false
+      });
+      
+      // Add portal colors if available
+      if (config.colors) {
+        window.portalTransitions.updateSectionColors(config.colors);
+      }
+    }
+  }
+  
+  // Create portal navigation controls if specified
+  if (config.portal_nav || (window.magazineData && window.magazineData.navigation && window.magazineData.navigation.portal_nav)) {
+    createPortalNavControls();
+  }
 }
 
 /**
@@ -286,6 +353,14 @@ function renderRichMagazine(data) {
   // Add scanline effect if requested
   if (data.effects && data.effects.scanlines) {
     document.body.classList.add('scanlines');
+  }
+  
+  // Store magazine data globally for other functions
+  window.magazineData = data;
+  
+  // Apply global layout settings if available
+  if (data.layout && data.layout.global) {
+    applyGlobalLayout(data.layout.global);
   }
 }
 
@@ -395,6 +470,11 @@ function applyLayout(element, layout) {
   // Apply depth effect
   if (layout.depth_effect) {
     element.classList.add('depth-effect');
+    
+    // Add portal effect if specified
+    if (layout.portal_intensity) {
+      element.setAttribute('data-portal-intensity', layout.portal_intensity);
+    }
     
     // Add depth layers to children
     const children = element.children;
@@ -793,4 +873,140 @@ function displayErrorMessage(message) {
       <p>${message}</p>
     </div>
   `;
+}
+
+/**
+ * Creates visual prompts section
+ * @param {Array} prompts - The visual prompts array
+ */
+function createVisualPrompts(prompts) {
+  const visualsSection = document.getElementById('visual-prompts');
+  const promptGrid = visualsSection.querySelector('.prompt-grid');
+  
+  // Clear existing prompts
+  promptGrid.innerHTML = '';
+  
+  // Create each prompt
+  prompts.forEach(prompt => {
+    const promptItem = document.createElement('div');
+    promptItem.className = 'prompt-item';
+    promptItem.textContent = prompt;
+    promptGrid.appendChild(promptItem);
+  });
+  
+  // Show the section
+  visualsSection.classList.remove('hidden');
+}
+
+/**
+ * Applies global layout settings to the document
+ * @param {Object} globalLayout - The global layout configuration
+ */
+function applyGlobalLayout(globalLayout) {
+  // Apply snap scrolling if specified
+  if (globalLayout.snap_scroll) {
+    const contentContainer = document.getElementById('magazine-content');
+    if (contentContainer) {
+      contentContainer.classList.add('snap-scroll');
+    }
+    
+    // Add class to HTML root for global snap scrolling support
+    document.documentElement.classList.add('snap-scroll-root');
+  }
+  
+  // Apply portal transitions if specified
+  if (globalLayout.transition_style === 'portal') {
+    document.documentElement.classList.add('portal-transitions-enabled');
+    
+    // Add class to content container for portal styles
+    const contentContainer = document.getElementById('magazine-content');
+    if (contentContainer) {
+      contentContainer.classList.add('portal-container');
+    }
+  }
+}
+
+/**
+ * Creates portal navigation controls
+ */
+function createPortalNavControls() {
+  // Check if controls already exist
+  if (document.querySelector('.portal-nav-controls')) {
+    return;
+  }
+  
+  // Create controls container
+  const controlsContainer = document.createElement('div');
+  controlsContainer.className = 'portal-nav-controls';
+  
+  // Get sections and create a navigation dot for each
+  const sections = document.querySelectorAll('.cover-section, .editorial-section, .culture-section, .tech-section, .interview-section, .ads-section, .lore-section');
+  
+  sections.forEach((section, index) => {
+    const navButton = document.createElement('div');
+    navButton.className = 'portal-nav-button';
+    navButton.setAttribute('data-section', section.id);
+    
+    // Mark first section as active
+    if (index === 0) {
+      navButton.classList.add('active');
+    }
+    
+    // Set custom color if available in magazine data
+    if (window.magazineData && 
+        window.magazineData.navigation && 
+        window.magazineData.navigation.items) {
+      
+      const navItem = window.magazineData.navigation.items.find(item => item.id === section.id);
+      if (navItem && navItem.portal_color) {
+        navButton.style.backgroundColor = navItem.portal_color;
+      }
+    }
+    
+    // Add click handler to trigger transition
+    navButton.addEventListener('click', () => {
+      if (window.portalTransitions) {
+        window.portalTransitions.transitionToSection(section.id);
+        
+        // Update active button
+        document.querySelectorAll('.portal-nav-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        navButton.classList.add('active');
+      } else {
+        // Fallback to standard scrolling
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    controlsContainer.appendChild(navButton);
+  });
+  
+  // Append controls to body
+  document.body.appendChild(controlsContainer);
+  
+  // Set up intersection observer to update active dot
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        const sectionId = entry.target.id;
+        const navButton = document.querySelector(`.portal-nav-button[data-section="${sectionId}"]`);
+        
+        if (navButton) {
+          document.querySelectorAll('.portal-nav-button').forEach(btn => {
+            btn.classList.remove('active');
+          });
+          navButton.classList.add('active');
+        }
+      }
+    });
+  }, {
+    threshold: 0.5,
+    rootMargin: '0px'
+  });
+  
+  // Observe all sections
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 }
