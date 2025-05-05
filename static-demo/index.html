@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The GEN-R-L MiLLz Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hyperav/css/enhanced-styles.css">
+</head>
+<body>
+    <!-- HyperAV Background Layer -->
+    <div id="hyperav-container" class="background-layer"></div>
+    
+    <div class="container">
+        <header id="magazine-header">
+            <h1 class="title">The GEN-R-L MiLLz Manifesto</h1>
+            <p class="issue"></p>
+            <div class="issue-meta">
+                <span class="issue-number"></span>
+                <span class="issue-date"></span>
+            </div>
+        </header>
+
+        <main id="magazine-content">
+            <!-- Dynamic content will be loaded here via JavaScript -->
+            <div class="loading">
+                <div class="cybr-spinner">
+                    <div class="loader"></div>
+                    <span class="loading-text">Manifesting Codex...</span>
+                </div>
+            </div>
+        </main>
+
+        <section id="visual-prompts" class="hidden">
+            <h2>Visual Manifestations</h2>
+            <div class="prompt-grid">
+                <!-- Prompts will be added here dynamically -->
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-cell">GEN-R-L MiLLz</div>
+                <div class="footer-cell">Hyperbolic Info Hagiography</div>
+                <div class="footer-cell">Sacred Tech</div>
+                <div class="footer-cell">© 2025</div>
+            </div>
+            <div class="mode-toggle">
+                <button id="legacyModeBtn">Legacy Mode</button>
+                <button id="richModeBtn" class="active">Rich Mode</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="magazine-data.js"></script>
+    <script src="hyperav/hyperav-minimal.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

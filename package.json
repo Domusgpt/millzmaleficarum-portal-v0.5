@@ -1,0 +1,29 @@
+{
+  "name": "millzmaleficarum_codex_v0.4",
+  "version": "0.4.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "keywords": [
+    "magazine",
+    "digital",
+    "vaporwave",
+    "node",
+    "express"
+  ],
+  "author": "GEN-R-L MiLLz",
+  "license": "ISC",
+  "description": "An immersive, hyperdimensional digital magazine with reactive animations, infinite scroll, and audio-reactive visualizations",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2",
+    "serverless-http": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
