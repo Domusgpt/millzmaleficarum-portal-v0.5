@@ -9,16 +9,23 @@ jobs:
   deploy:
     name: Deploy to Fly.io
     runs-on: ubuntu-latest
+    env:
+      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
       
+      - name: Verify Fly.io authentication and apps
+        run: |
+          echo "Checking Fly.io authentication status"
+          flyctl auth whoami
+          echo "Listing available Fly.io apps"
+          flyctl apps list
+          
       - name: Deploy to Fly.io
         run: |
-          echo "Checking Fly.io app existence"
-          flyctl apps list
           echo "Deploying to app millzmaleficarum-portal-v05"
           flyctl deploy --remote-only --app millzmaleficarum-portal-v05 --config fly.toml
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          echo "Deployment completed"
