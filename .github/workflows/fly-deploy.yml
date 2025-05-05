@@ -16,7 +16,9 @@ jobs:
       
       - name: Deploy to Fly.io
         run: |
+          echo "Checking Fly.io app existence"
+          flyctl apps list
           echo "Deploying to app millzmaleficarum-portal-v05"
-          flyctl deploy --remote-only --app millzmaleficarum-portal-v05
+          flyctl deploy --remote-only --app millzmaleficarum-portal-v05 --config fly.toml
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
