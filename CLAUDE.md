@@ -3,15 +3,18 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Status
-- **Current Version: 0.5-dev** (See DEV-TRACK.md for latest updates)
-- Hyperdimensional magazine with enhanced snap-scroll page transitions
-- Implementing portal-like transitions between sections with 4D visualization effects
-- Advanced integration of HyperAV engine directly into the page structure
+- **Current Version: 0.5-portal** (See DEV-TRACK.md for latest updates)
+- Portal-based hyperdimensional magazine with enhanced snap-scroll transitions
+- Implemented immersive portal transitions between sections with 4D visualization
+- Added portal navigation system with audio-reactive dimensional sounds
+- Deep integration of HyperAV engine with portal transition effects
+- Deployed to separate Fly.io instance at https://millzmaleficarum-portal-v0.5.fly.dev
+- Repository at https://github.com/Domusgpt/millzmaleficarum-portal-v0.5
 
 ## Commands
 - **Run locally**: `npm start` or `./run-local.sh`
-- **Deploy to Fly.io**: `./fly-deploy.sh`
-- **HyperAV integration**: `./hyperav-sync.sh` 
+- **Deploy portal version**: `./deploy-portal-to-fly.sh`
+- **GitHub workflow**: Auto-deploys on push to master branch 
 - **Lint shell scripts**: `shellcheck filename.sh`
 - **Test**: Run `npm test` (no tests specified yet)
 

@@ -2,35 +2,36 @@
 
 This file tracks changes made to the MillzMaleficarum Codex project on a session-by-session basis.
 
-## In Progress: May 13, 2025 - Enhanced Portal Dimension Experience
+## Completed: May 18, 2025 - Portal Dimension V0.5 Release
 
-### Current Development Focus
-- **Version update to 0.5**
-- **Implementing snap-scroll page transitions** with section-based portal navigation
-- **Creating advanced portal-like transition effects** with hyperdimensional visuals
-- **Deep integration with HyperAV engine** for seamless 4D visualization during transitions
-- **Interactive sections** that function as distinct dimensions with unique portal borders
-- **Audio-reactive portal transitions** with synthesized dimensional sounds
+### New Release Details
+- **Version 0.5-portal released**
+- **Deployed to new Fly.io instance**: https://millzmaleficarum-portal-v0.5.fly.dev
+- **New GitHub repository**: https://github.com/Domusgpt/millzmaleficarum-portal-v0.5
+- **GitHub Actions workflow** for automated deployment
 
-### Technical Achievements
-- Implemented CSS scroll-snap for precise section positioning
-- Developed enhanced portal transitions with direction-aware effects
-- Created 4D visualization layer that integrates with transitions
-- Added audio synthesis for immersive transition sounds
-- Implemented keyboard navigation between section portals
-- Added mouse-reactive portal borders with dimensional effects
-- Created section-specific portal styling with custom colors
-- Built transition system that feels like traveling through hyperdimensional space
+### Major Features Implemented
+- **Portal transition system** with immersive dimensional travel effects
+- **Snap-scroll navigation** with section-based portal points
+- **Direction-aware portal effects** for natural journey through dimensions
+- **4D visualization layer** with tesseract integration during transitions
+- **Audio synthesis** for dimensional travel sounds
+- **Enhanced HyperAV integration** for continuous 4D visualization
+- **Reactive portal borders** that respond to hover interactions
+- **Section-specific portals** with unique visual identities
+- **Keyboard/mouse navigation** for dimensional travel
+- **JSON-driven configuration** for flexible portal settings
 
-### Implementation Details
+### Technical Implementation
 - Portal transition system with bidirectional travel effects
-- WebGL canvas for portal rendering with complex visual effects
-- WebAudio API for synthesized transition sounds
-- 4D tesseract visualization during transitions
-- HyperAV integration for seamless dimensional visualization
+- WebGL canvas for complex portal rendering with dimensional effects
+- WebAudio API integration for synthesized dimensional sounds
+- 4D tesseract visualization during transition events
+- Deep HyperAV integration for seamless visualization handoffs
 - MouseMove and keyboard event tracking for interactive controls
-- CSS 3D transformations for section transition effects
-- Custom WebGL shader effects for portal transitions
+- CSS 3D transformations with perspective and depth effects
+- Custom portal animation system with GPU-accelerated effects
+- Reactive portal interaction system with mouse and device sensors
 
 ## Completed: May 10, 2025 - Hyperdimensional Enhancement
 

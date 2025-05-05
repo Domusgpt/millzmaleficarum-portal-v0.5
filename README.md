@@ -1,23 +1,36 @@
-# MillzMaleficarum Codex - Static Demo
+# MillzMaleficarum Portal Codex v0.5
 
-This is a static demonstration version of the MillzMaleficarum Codex application.
+An immersive, hyperdimensional digital magazine with portal-like transitions, snap-scroll navigation, and integrated 4D visualizations.
 
-## Features
+## Portal Dimension Experience
 
-- View the GEN-R-L MiLLz Manifesto in rich format
-- Toggle between rich and legacy display modes
-- Responsive design works on all device sizes
-- Includes all core visual elements and styles
+The Portal Codex v0.5 creates a genuinely interdimensional experience as you navigate through sections, with each transition feeling like travel through a hyperdimensional portal between distinct realities.
 
-## How to Use
+## Live Demo
 
-1. Open `index.html` in your browser
-2. The rich format view will be displayed by default
-3. Use the toggle buttons at the bottom to switch between rich and legacy formats
+Experience the portal magazine at:
+[https://millzmaleficarum-portal-v0.5.fly.dev](https://millzmaleficarum-portal-v0.5.fly.dev)
 
-## Important Notes
+## Key Features
 
-This is a standalone static version for demonstration purposes. For a fully functional version with working dashboard and data storage, please refer to the main repository.
+- **Portal Transitions**: Immersive dimensional travel between sections
+- **4D Visualization**: Tesseract and hypercube visualizations during transitions
+- **Audio Synthesis**: Dimensional travel sounds for complete immersion
+- **Reactive Portals**: Interactive borders that respond to user interaction
+- **Snap-Scroll Navigation**: Magazine-like section separation
+- **HyperAV Integration**: Seamless 4D background visualization
+- **JSON-Driven**: Flexible configuration through JSON data
+
+## Development
+
+1. Clone the repository
+2. Run `npm install`
+3. Start the server with `npm start`
+4. Visit [http://localhost:8080](http://localhost:8080)
+
+## Deployment
+
+Auto-deploys to Fly.io through GitHub Actions workflow on push to master.
 
 ## Credits
 
