@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'millzmaleficarum-portal-v0.5'
+app = 'millzmaleficarum-portal-v05'
 primary_region = 'sjc'
 
 [build]
@@ -13,7 +13,7 @@ primary_region = 'sjc'
   PORT = '8080'
 
 [[mounts]]
-  source = 'millz_portal_data'
+  source = 'millzmal_portal_data'
   destination = '/app/data'
 
 [http_service]

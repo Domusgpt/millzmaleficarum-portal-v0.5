@@ -1,5 +1,5 @@
 {
-  "version": 1746533663675,
+  "version": 1746533663999,
   "issue_number": 126.5,
   "date": "2025-05-18",
   "title": "The GEN-R-L MiLLz Manifesto",
@@ -17,11 +17,12 @@
     },
     "portal_transitions": {
       "enabled": true,
-      "intensity": 0.9,
+      "intensity": 0.95,
       "audio_enabled": true,
       "visual_style": "hyperdimensional",
       "4d_effects": true,
       "direction_aware": true,
+      "hyperav_enabled": true,
       "mouse_reactive": true,
       "colors": {
         "cover": { "primary": "#ff00aa", "secondary": "#00eeff", "accent": "#ff33ff" },
@@ -94,7 +95,8 @@
       "type": "portal_snap",
       "depth_effect": true,
       "transition_style": "portal",
-      "snap_scroll": true
+      "snap_scroll": true,
+      "portal_enabled": true
     },
     "cover": {
       "type": "full_bleed",
