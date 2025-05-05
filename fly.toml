@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for millzmaleficarum-codex on 2025-05-03T22:36:32Z
+# fly.toml app configuration file for millzmaleficarum-portal-v0.5
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'millzmaleficarum-codex'
+app = 'millzmaleficarum-portal-v0.5'
 primary_region = 'sjc'
 
 [build]
@@ -13,7 +13,7 @@ primary_region = 'sjc'
   PORT = '8080'
 
 [[mounts]]
-  source = 'millz_data'
+  source = 'millz_portal_data'
   destination = '/app/data'
 
 [http_service]
