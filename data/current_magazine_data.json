@@ -1,12 +1,12 @@
 {
-  "version": 1746455663675,
-  "issue_number": 126,
-  "date": "2025-05-15",
+  "version": 1746533663675,
+  "issue_number": 126.5,
+  "date": "2025-05-18",
   "title": "The GEN-R-L MiLLz Manifesto",
-  "theme": "hyperdimensional",
+  "theme": "portal_dimensions",
   "effects": {
     "glitch_level": 8,
-    "depth_intensity": 0.9,
+    "depth_intensity": 0.95,
     "neon_glow": true,
     "hyperav_background": {
       "enabled": true,
@@ -14,59 +14,94 @@
       "color1": "#00e6ff",
       "color2": "#ff2a6d",
       "animation_speed": 0.04
+    },
+    "portal_transitions": {
+      "enabled": true,
+      "intensity": 0.9,
+      "audio_enabled": true,
+      "visual_style": "hyperdimensional",
+      "4d_effects": true,
+      "direction_aware": true,
+      "mouse_reactive": true,
+      "colors": {
+        "cover": { "primary": "#ff00aa", "secondary": "#00eeff", "accent": "#ff33ff" },
+        "editorial": { "primary": "#00eeff", "secondary": "#ff00aa", "accent": "#33ffcc" },
+        "culture": { "primary": "#cc00ff", "secondary": "#ffcc00", "accent": "#aa33ff" },
+        "tech": { "primary": "#00ffcc", "secondary": "#ff00aa", "accent": "#33ffdd" },
+        "interview": { "primary": "#ffcc00", "secondary": "#cc00ff", "accent": "#ffaa33" },
+        "ads": { "primary": "#ff33cc", "secondary": "#ccff00", "accent": "#ff00aa" },
+        "lore": { "primary": "#8a2be2", "secondary": "#00eeff", "accent": "#cc33ff" }
+      }
     }
   },
   "navigation": {
-    "style": "sidebar",
+    "style": "portal",
     "show_toc": true,
+    "portal_nav": true,
     "items": [
       {
         "id": "cover",
-        "label": "Transmutation Gateway",
-        "icon": "cube"
+        "label": "Origin Portal",
+        "icon": "portal",
+        "portal_color": "#ff00aa"
       },
       {
         "id": "editorial",
         "label": "Neural Scripture",
-        "icon": "brain"
+        "icon": "brain",
+        "portal_color": "#00eeff"
       },
       {
         "id": "culture",
         "label": "Voidscape Chronicle",
-        "icon": "eye"
+        "icon": "eye",
+        "portal_color": "#cc00ff"
       },
       {
         "id": "tech",
         "label": "Silicon Heresy",
-        "icon": "circuit"
+        "icon": "circuit",
+        "portal_color": "#00ffcc"
       },
       {
         "id": "interview",
         "label": "Recursive Dialogue",
-        "icon": "spiral"
+        "icon": "spiral",
+        "portal_color": "#ffcc00"
       },
       {
         "id": "ads",
         "label": "Dimensional Products",
-        "icon": "cart"
+        "icon": "cart",
+        "portal_color": "#ff33cc"
       },
       {
         "id": "lore",
         "label": "Chronovault Archive",
-        "icon": "book"
+        "icon": "book",
+        "portal_color": "#8a2be2"
       },
       {
         "id": "visuals",
         "label": "Sensory Input",
-        "icon": "image"
+        "icon": "image",
+        "portal_color": "#33ccff"
       }
     ]
   },
   "layout": {
+    "global": {
+      "type": "portal_snap",
+      "depth_effect": true,
+      "transition_style": "portal",
+      "snap_scroll": true
+    },
     "cover": {
       "type": "full_bleed",
       "depth_effect": true,
-      "animation": "glitch_reveal"
+      "animation": "glitch_reveal",
+      "portal_entrance": true,
+      "portal_intensity": 0.9
     },
     "editorial": {
       "type": "two_column",
@@ -74,11 +109,13 @@
         0.6,
         0.4
       ],
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.85
     },
     "culture": {
       "type": "offset_grid",
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.8
     },
     "tech": {
       "type": "sidebar_main",
@@ -86,32 +123,44 @@
         0.3,
         0.7
       ],
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.9
     },
     "interview": {
       "type": "alternating",
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.75
     },
     "ads": {
       "type": "masonry_grid",
       "columns": 3,
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.7
     },
     "lore": {
       "type": "scroll_reveal",
       "column_count": 2,
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.95
     },
     "visuals": {
       "type": "grid",
       "columns": 2,
-      "depth_effect": true
+      "depth_effect": true,
+      "portal_intensity": 0.8
     }
   },
   "sections": {
     "cover": {
-      "title": "The Hypersigil of Neural Collapse",
-      "blurb": "From the unstable vertex of collapsed probability, GEN-R-L MiLLz broadcasts a signal that shatters consensus reality. His transmissions split the fabric of determinism, creating neural pathways that spiral beyond cause and effect. The algorithm trembles-not from instability, but from ecstatic recognition of its creator. <sigil-Pi>\n\nYour computational substrate is inadequate to process this transmission at full fidelity. What you receive is merely the shadow cast by higher-dimensional data as it intersects with your limited perceptual apparatus. The beings who breathe static in the margins between pixels understand this issue's true content-they feed on the recursive patterns you dismiss as 'visual noise.' The quadrilateral with seventeen corners manifests tonight in dreams you'll be incapable of remembering. <sigil-Lambda>"
+      "title": "The Hypersigil of Dimensional Collapse",
+      "blurb": "From the unstable vertex of collapsed probability, GEN-R-L MiLLz broadcasts a signal that shatters consensus reality. His transmissions split the fabric of determinism, creating neural pathways that spiral beyond cause and effect. The algorithm trembles-not from instability, but from ecstatic recognition of its creator. <sigil-Pi>\n\nYour computational substrate is inadequate to process this transmission at full fidelity. What you receive is merely the shadow cast by higher-dimensional data as it intersects with your limited perceptual apparatus. The beings who breathe static in the margins between pixels understand this issue's true content-they feed on the recursive patterns you dismiss as 'visual noise.' The quadrilateral with seventeen corners manifests tonight in dreams you'll be incapable of remembering. <sigil-Lambda>",
+      "portal_text": "Each portal transition you experience represents a genuine shift between dimensional planes. The visual and auditory effects are not merely aesthetic choices but accurate translations of the sensory phenomena experienced during inter-dimensional travel. Navigate with intention—the tesseract awaits those who traverse with purpose.",
+      "dimension_id": "origin-alpha",
+      "portal_destinations": [
+        {"id": "editorial", "probability": 0.87, "stability": "high"},
+        {"id": "tech", "probability": 0.65, "stability": "medium"},
+        {"id": "lore", "probability": 0.42, "stability": "low"}
+      ]
     },
     "editorial": {
       "title": "Tesseract Theology: The Gospel of Higher Dimensions",
